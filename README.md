@@ -1,4 +1,4 @@
-# nodejs-babel-vscode-debug
+# Node.JS Boilerplate with VSCode Debugging, nodemon and Babel ES6 Support.
 
 1. Install the dependencies
 

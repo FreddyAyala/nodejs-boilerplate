@@ -17,7 +17,9 @@ const server = http.createServer(app);
  * Listen on provided port, on all network interfaces.
  */
 export const listen = () => {
-    server.listen(port);
+    server.listen(app.get('port'), function(){
+    console.log('Express server listening on port ' + app.get('port'));
+});
     server.on('error', onError);
     server.on('listening', onListening);
 }
@@ -82,5 +84,6 @@ async function onListening() {
     console.log("=================================");
     console.log('Server listening on ' + bind);
     console.log("=================================");
+    
 }
 

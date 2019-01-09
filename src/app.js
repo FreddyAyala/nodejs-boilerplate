@@ -5,13 +5,13 @@ import logger from 'morgan';
 import cookieParser from 'cookie-parser';
 import bodyParser from 'body-parser';
 
-import index from './routes/index';
-import users from './routes/users';
+import index from './infrastructure/routes/index';
+import users from './infrastructure/routes/users';
 
 const app = express();
 
 // view engine setup
-app.set('views', path.join(__dirname, 'views'));
+app.set('views', path.join(__dirname, '/presentation/views'));
 app.set('view engine', 'jade');
 
 // uncomment after placing your favicon in /public
@@ -39,7 +39,7 @@ app.use(function (err, req, res, next) {
     res.locals.error = req.app.get('env') === 'development' ? err : {};
 
     // render the error page
-    res.status(err.status || 500);
+    res.status(err.status || 500).json({status: err.status, message: err.message})
     res.render('error');
 });
 
